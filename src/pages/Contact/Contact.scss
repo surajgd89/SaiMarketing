@@ -1,0 +1,153 @@
+@import '../../_root.scss';
+
+//CONTACT
+.contact {
+    padding: 8rem 2rem;
+
+    @include md {
+        padding: 4rem 2rem;
+    }
+
+    .contact__form {
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem 3rem;
+        grid-template-areas:
+            'a-name a-email'
+            'a-mobile a-subject'
+            'a-message a-message'
+            'a-send a-send';
+
+        @include md {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-areas:
+                'a-name'
+                'a-email'
+                'a-mobile'
+                'a-subject'
+                'a-message'
+                'a-send';
+        }
+
+        .area-name {
+            grid-area: a-name;
+        }
+        .area-email {
+            grid-area: a-email;
+        }
+        .area-mobile {
+            grid-area: a-mobile;
+        }
+        .area-subject {
+            grid-area: a-subject;
+        }
+        .area-message {
+            grid-area: a-message;
+        }
+        .area-send {
+            grid-area: a-send;
+        }
+
+        .form_group {
+            position: relative;
+            .form_label {
+                display: inline-flex;
+                font-size: 1.4rem;
+                position: absolute;
+                top: -1.2rem;
+                left: 1rem;
+                padding: 0.2rem 1rem;
+                background: #fff;
+                color: var(--secondary-light);
+            }
+            .form_control {
+                width: 100%;
+                padding: 0.9rem 1.2rem;
+                height: 100%;
+                min-height: 5rem;
+                border: 2px solid #666a92;
+                border-radius: 4px;
+                outline: 0;
+                transition: 300ms border;
+                font-size: 1.6rem;
+                color: var(--secondary-dark);
+
+                @include md {
+                    font-size: 1.4rem;
+                }
+
+                &:focus {
+                    border: 2px solid var(--primary-dark);
+                }
+            }
+        }
+
+        .btn_send_message {
+            padding: 1.2rem;
+            min-height: 6rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff;
+            background: var(--primary-dark);
+            outline: 0;
+            border-radius: 4px;
+            border: 0;
+            cursor: pointer;
+            i {
+                font-size: 20px;
+                margin-right: 1.4rem;
+            }
+        }
+    }
+}
+//MAP
+.map {
+    line-height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+    padding: 0 2rem 2rem 2rem;
+
+    @include md {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    iframe {
+        margin: 0;
+        padding: 0;
+    }
+
+    .map__office,
+    .map__factory {
+        .map__head {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-dark);
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                margin-right: 1rem;
+                font-size: 2.2rem;
+            }
+        }
+
+        iframe {
+            border: 1px solid #c2c4d3;
+            overflow: hidden;
+            border-radius: 0.6rem;
+            position: relative;
+        }
+    }
+}

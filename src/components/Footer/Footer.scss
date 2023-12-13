@@ -1,0 +1,83 @@
+@import '../../_root.scss';
+
+//FOOTER
+.footer {
+    background: var(--secondary-dark);
+    padding: 5rem 2rem;
+
+    .footer__area {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, max-content));
+        gap: 3rem;
+
+        @include lg {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .footer__head {
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+
+            @include md {
+                font-size: 2rem;
+            }
+        }
+
+        .footer__para {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.6rem;
+            margin-bottom: 1.6rem;
+
+            @include md {
+                font-size: 1.4rem;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            small {
+                font-size: 1.2rem;
+                display: flex;
+            }
+        }
+
+        .footer__about {
+        }
+
+        .footer__address {
+            .footer__social {
+                display: flex;
+                gap: 1.6rem;
+                .footer__social_link {
+                    color: rgba(255, 255, 255, 0.5);
+                    i {
+                        font-size: 3.2rem;
+                    }
+
+                    &:hover {
+                        color: rgba(255, 255, 255, 1);
+                    }
+                }
+            }
+        }
+
+        .footer__bizhrs {
+        }
+    }
+
+    .footer__copy {
+        color: rgba(255, 255, 255, 0.3);
+        border-top: 1px solid var(--header-border);
+        font-size: 1.6rem;
+        padding-top: 2.4rem;
+        text-align: center;
+        margin-top: 2.4rem;
+
+        @include md {
+            font-size: 1.4rem;
+        }
+    }
+}

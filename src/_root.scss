@@ -1,0 +1,50 @@
+//For Extra Small
+@mixin xsm {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
+
+//For Small
+@mixin sm {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+//For Medium
+@mixin md {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+//For large
+@mixin lg {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+//For Extra Large
+@mixin xl {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+//For Extra Extra Large
+@mixin xxl {
+    @media (max-width: 1400px) {
+        @content;
+    }
+}
+
+// COLORS
+:root {
+    --primary-dark: #3c4ef3;
+    --primary-light: #eceeff;
+    --secondary-dark: #050520;
+    --secondary-light: #4a4f78;
+    --header-border: #121233;
+}

@@ -1,0 +1,35 @@
+@import '../../_root.scss';
+
+//RESELLER
+.reseller {
+    padding: 0 2rem 8rem 2rem;
+
+    @include md {
+        padding: 0 2rem 4rem 2rem;
+    }
+
+    .reseller__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 4rem;
+
+        @include md {
+            gap: 2rem;
+        }
+
+        .reseller__list_item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 10rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            > img {
+                max-height: 100%;
+            }
+        }
+    }
+}
