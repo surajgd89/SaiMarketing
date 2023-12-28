@@ -20,16 +20,16 @@ function Footer() {
                      Mumbai - 400010</p>
                   <p className="footer__para">GSTIN - 27ALGPD5253P1ZR</p>
                   <div className="footer__social">
-                     <a href="javascript:void(0)" className="footer__social_link">
+                     <a href="#" className="footer__social_link">
                         <i className="fa-brands fa-facebook-square"></i>
                      </a>
-                     <a href="javascript:void(0)" className="footer__social_link">
+                     <a href="#" className="footer__social_link">
                         <i className="fa-brands fa-twitter-square"></i>
                      </a>
-                     <a href="javascript:void(0)" className="footer__social_link">
+                     <a href="#" className="footer__social_link">
                         <i className="fa-brands fa-linkedin"></i>
                      </a>
-                     <a href="javascript:void(0)" className="footer__social_link">
+                     <a href="#" className="footer__social_link">
                         <i className="fa-brands fa-whatsapp-square"></i>
                      </a>
                   </div>

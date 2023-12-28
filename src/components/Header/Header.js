@@ -18,7 +18,7 @@ function Header() {
       // HEADER 
       <header className="header">
          <div className="container">
-            <a href="javascript:void(0)" className="header__brand">
+            <a href="#" className="header__brand">
                <small>SM</small>
                <span>Sai Marketing</span>
             </a>
