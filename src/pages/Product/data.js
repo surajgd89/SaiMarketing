@@ -98,7 +98,7 @@ const items = [
       brandName: "ITC",
       productImage: "/images/products/Crab-Claw-Amritsari.png",
       productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/",
-      bestSeller: true,
+      bestSeller: "Y",
       foodCategory: "V",
       availableIn: [
          {
@@ -133,7 +133,7 @@ const items = [
       brandName: "Gadre",
       productImage: "/images/products/Crab-Claw-Amritsari.png",
       productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/2",
-      bestSeller: false,
+      bestSeller: "N",
       foodCategory: "N",
       availableIn: [
          {
@@ -153,9 +153,6 @@ const items = [
       ],
       cookType: ["SF", "DF"],
    },
-
-
-
 
 ];
 

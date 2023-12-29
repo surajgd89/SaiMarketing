@@ -10,7 +10,7 @@ function Product() {
 
    const [productItems, setProductItems] = useState(items);
    const [productBrands, setProductBrands] = useState(brands);
-   const [selectedProduct, setSelectedProduct] = useState("*");
+   const [selectedProduct, setSelectedProduct] = useState("A");
 
 
 
@@ -21,10 +21,10 @@ function Product() {
    }
 
    const handleProductClick = (event) => {
-      let selectedValue = event.target.dataset.value;
-      console.log(selectedValue)
+      let selectedValue = event.currentTarget.dataset.value;
       setSelectedProduct(selectedValue);
    }
+
 
    return (
       <>
@@ -37,8 +37,9 @@ function Product() {
                   companies innovate faster and build better product, using real user data and rapid iterations.
                </p>
                <div className="product__action">
+
                   <select className="custom_Select" onChange={handleProductChange}>
-                     <option value="*">All</option>
+                     <option value="A">All</option>
                      {
                         productItems.map((item, index) => {
                            return (
@@ -49,10 +50,10 @@ function Product() {
                   </select>
 
                   <div className="custom_Filter">
-                     <span onClick={(event) => handleProductClick(event)} data-value="*" className={`custom_Filter__btn ${selectedProduct === "*" ? "custom_Filter__btn--active" : ""}`}  ><i className="fa-regular fa-check"></i>All</span>
-                     <span onClick={(event) => handleProductClick(event)} data-value="V" className={`custom_Filter__btn ${selectedProduct === "V" ? "custom_Filter__btn--active" : ""}`}><i className="fa-regular fa-check"></i>Veg</span>
-                     <span onClick={(event) => handleProductClick(event)} data-value="N" className={`custom_Filter__btn ${selectedProduct === "N" ? "custom_Filter__btn--active" : ""}`}><i className="fa-regular fa-check"></i>Non-Veg</span>
-                     <span onClick={(event) => handleProductClick(event)} data-value={Boolean(true)} className="custom_Filter__btn"><i className="fa-regular fa-check"></i>Best Seller</span>
+                     <div onClick={(event) => handleProductClick(event)} data-value="A" className={`custom_Filter__btn ${selectedProduct === "A" ? "custom_Filter__btn--active" : ""}`}  ><i className="fa-regular fa-check"></i>All</div>
+                     <div onClick={(event) => handleProductClick(event)} data-value="V" className={`custom_Filter__btn ${selectedProduct === "V" ? "custom_Filter__btn--active" : ""}`}><i className="fa-regular fa-check"></i>Veg</div>
+                     <div onClick={(event) => handleProductClick(event)} data-value="N" className={`custom_Filter__btn ${selectedProduct === "N" ? "custom_Filter__btn--active" : ""}`}><i className="fa-regular fa-check"></i>Non-Veg</div>
+                     <div onClick={(event) => handleProductClick(event)} data-value="Y" className={`custom_Filter__btn ${selectedProduct === "Y" ? "custom_Filter__btn--active" : ""}`}><i className="fa-regular fa-check"></i>Best Seller</div>
                   </div>
 
                </div>

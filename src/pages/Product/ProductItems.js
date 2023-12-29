@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const ProductItems = ({ productItems, selectedProduct }) => {
 
-   const filteredProducts = selectedProduct === '*' ? productItems : productItems.filter(item => item.brandName === selectedProduct || item.foodCategory === selectedProduct || item.bestSeller === true);
+   const filteredProducts = selectedProduct === 'A' ? productItems : productItems.filter(item => item.brandName === selectedProduct || item.foodCategory === selectedProduct || item.bestSeller === selectedProduct);
 
    const [price, setPrice] = useState({});
    const refProductSize = useRef(null);
@@ -26,11 +26,8 @@ const ProductItems = ({ productItems, selectedProduct }) => {
    }
 
    useEffect(() => {
-
-
       const triggerClick = () => {
          const elements = document.querySelectorAll('.product__size_item:nth-child(1)');
-         console.log(elements)
          elements.forEach(element => {
             element.click();
          });
@@ -45,8 +42,7 @@ const ProductItems = ({ productItems, selectedProduct }) => {
       <>
          {filteredProducts.map((item) => {
             return (
-
-               <div key={item.id} className={`product__item ${item.foodCategory === "V" ? "product__veg" : ''}  ${item.foodCategory === "N" ? "product__non_veg" : ''}  ${item.bestSeller ? "product__best_seller" : ""}`}  >
+               <div key={item.id} className={`product__item ${item.foodCategory === "V" ? "product__veg" : 'product__non_veg'}  ${item.foodCategory === "N" ? "product__non_veg" : 'product__veg'}  ${item.bestSeller === "Y" ? "product__best_seller" : ""}`}  >
                   <a href={item.productLink} target="_blank" className="product__details"><i className="fa-regular fa-arrow-up-right-from-square"></i></a>
                   <div className="product__img">
                      <img src={process.env.PUBLIC_URL + item.productImage} alt="" />
