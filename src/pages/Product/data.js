@@ -89,12 +89,12 @@ const brands = [
       brandLogo: "/images/brands/goeld.png",
    },
 
-];
+]
 
 const items = [
    {
       id: 1,
-      productName: "Crab Claws Amritsari",
+      productName: "Crab Claws Amritsari - ITC1",
       brandName: "ITC",
       productImage: "/images/products/Crab-Claw-Amritsari.png",
       productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/",
@@ -129,7 +129,36 @@ const items = [
 
    {
       id: 2,
-      productName: "Crab Claws Amritsari2",
+      productName: "Crab Claws Amritsari - ITC2",
+      brandName: "ITC",
+      productImage: "/images/products/Crab-Claw-Amritsari.png",
+      productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/",
+      bestSeller: "Y",
+      foodCategory: "V",
+      availableIn: [
+         {
+            id: 1,
+            unit: 150,
+            pcs: 20,
+            price: 100,
+
+         },
+         {
+            id: 2,
+            unit: 250,
+            pcs: 40,
+            price: 200,
+
+         }
+
+
+      ],
+      cookType: ["SF", "DF", "AF"],
+   },
+
+   {
+      id: 3,
+      productName: "Crab Claws Amritsari - Gadre1",
       brandName: "Gadre",
       productImage: "/images/products/Crab-Claw-Amritsari.png",
       productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/2",
@@ -153,6 +182,26 @@ const items = [
       ],
       cookType: ["SF", "DF"],
    },
+
+   {
+      id: 4,
+      productName: "Crab Claws Amritsari - Gadre2",
+      brandName: "Gadre",
+      productImage: "/images/products/Crab-Claw-Amritsari.png",
+      productLink: "https://gadre.co.in/product/surimi-crab-claw-amritsari/2",
+      bestSeller: "N",
+      foodCategory: "N",
+      availableIn: [
+         {
+            id: 1,
+            unit: 150,
+            pcs: 20,
+            price: 400,
+
+         }
+      ],
+      cookType: ["SF", "DF"],
+   }
 
 ];
 

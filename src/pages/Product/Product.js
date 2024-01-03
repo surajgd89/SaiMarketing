@@ -11,8 +11,7 @@ function Product() {
    const [productItems, setProductItems] = useState(items);
    const [productBrands, setProductBrands] = useState(brands);
    const [selectedProduct, setSelectedProduct] = useState("A");
-
-
+   const [prevBrandName, setPrevBrandName] = useState(null);
 
 
    const handleProductChange = (event) => {
@@ -42,9 +41,24 @@ function Product() {
                      <option value="A">All</option>
                      {
                         productItems.map((item, index) => {
-                           return (
-                              <option key={index} value={item.brandName}>{item.brandName}</option>
-                           )
+
+
+
+                           if (item.brandName !== prevBrandName) {
+
+
+
+                              setPrevBrandName(item.brandName)
+
+                              return (
+                                 <option key={index} value={item.brandName}>
+                                    {item.brandName}
+                                 </option>
+                              );
+                           }
+
+                           return null;
+
                         })
                      }
                   </select>
