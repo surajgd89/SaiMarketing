@@ -73,11 +73,6 @@ function Product() {
    }, [products]);
 
 
-
-
-
-
-
    return (
       <>
          <section className="product">
