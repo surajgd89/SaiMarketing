@@ -3,7 +3,7 @@ const brands_data = [
       id: 1,
       brandName: "ITC",
       brandLogo: "/images/brands/itc.png",
-   }, ,
+   },
 
    {
       id: 2,

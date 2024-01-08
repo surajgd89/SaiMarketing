@@ -1,15 +1,15 @@
 const express = require('express');
+require('dotenv').config();
+const products = require('./products.json');
+const brands = require('./brands.json');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
 const app = express();
+
+
 app.use(cors());
 app.use(bodyParser.json());
-
-const products = require('./products.json');
-const brands = require('./brands.json');
-
 
 app.post('/api/send-email', async (req, res) => {
    try {
@@ -40,11 +40,19 @@ app.post('/api/send-email', async (req, res) => {
 
 });
 
-app.get('/api/data', (req, res) => {
+app.get('/api/brands', (req, res) => {
+   res.json(brands);
+});
+
+app.get('/api/products', (req, res) => {
    res.json(products);
 });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
+   console.log(process.env.PORT)
    console.log(`Server is running on port ${PORT}`);
 });
+
+
+

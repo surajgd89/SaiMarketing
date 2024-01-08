@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "productName": "Crab Claws Amritsari - ITC1",
+        "brandName": "ITC",
+        "productImage": "/images/products/Crab-Claw-Amritsari.png",
+        "productLink": "https://gadre.co.in/product/surimi-crab-claw-amritsari/",
+        "bestSeller": "N",
+        "foodCategory": "N",
+        "availableIn": [
+            {
+                "id": 1,
+                "unit": 150,
+                "pcs": 20,
+                "price": 100
+            },
+            {
+                "id": 2,
+                "unit": 250,
+                "pcs": 40,
+                "price": 200
+            },
+
+            {
+                "id": 3,
+                "unit": 1000,
+                "pcs": 60,
+                "price": 300
+            }
+        ],
+        "cookType": ["SF", "DF"]
+    },
+
+    {
+        "id": 2,
+        "productName": "Crab Claws Amritsari - ITC2",
+        "brandName": "ITC",
+        "productImage": "/images/products/Crab-Claw-Amritsari.png",
+        "productLink": "https://gadre.co.in/product/surimi-crab-claw-amritsari/",
+        "bestSeller": "Y",
+        "foodCategory": "V",
+        "availableIn": [
+            {
+                "id": 1,
+                "unit": 150,
+                "pcs": 20,
+                "price": 100
+            },
+            {
+                "id": 2,
+                "unit": 250,
+                "pcs": 40,
+                "price": 200
+            }
+        ],
+        "cookType": ["SF", "DF", "AF"]
+    },
+
+    {
+        "id": 3,
+        "productName": "Crab Claws Amritsari - Gadre1",
+        "brandName": "Gadre",
+        "productImage": "/images/products/Crab-Claw-Amritsari.png",
+        "productLink": "https://gadre.co.in/product/surimi-crab-claw-amritsari/2",
+        "bestSeller": "Y",
+        "foodCategory": "N",
+        "availableIn": [
+            {
+                "id": 1,
+                "unit": 150,
+                "pcs": 20,
+                "price": 400
+            },
+            {
+                "id": 2,
+                "unit": 250,
+                "pcs": 40,
+                "price": 500
+            }
+        ],
+        "cookType": ["SF", "DF"]
+    },
+
+    {
+        "id": 4,
+        "productName": "Crab Claws Amritsari - Gadre2",
+        "brandName": "Gadre",
+        "productImage": "/images/products/Crab-Claw-Amritsari.png",
+        "productLink": "https://gadre.co.in/product/surimi-crab-claw-amritsari/2",
+        "bestSeller": "N",
+        "foodCategory": "N",
+        "availableIn": [
+            {
+                "id": 1,
+                "unit": 150,
+                "pcs": 20,
+                "price": 400
+            }
+        ],
+        "cookType": ["SF", "DF"]
+    }
+]
