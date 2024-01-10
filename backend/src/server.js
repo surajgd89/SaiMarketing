@@ -15,8 +15,12 @@ app.post('/api/send-email', async (req, res) => {
    try {
       const { name, email, mobile, subject, message } = req.body;
 
+      console.log(req.body)
+
       const transporter = nodemailer.createTransport({
-         service: 'gmail',
+         host: "smtp.gmail.com",
+         port: 587,
+         secure: false,
          auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASSWORD,
@@ -24,14 +28,13 @@ app.post('/api/send-email', async (req, res) => {
       });
 
       const mailOptions = {
-         from: 'mail.shreeshadigital@gmail.com',
+         from: process.env.EMAIL_USER,
          to: 'suraj.gd89@gmail.com',
          subject: 'New Contact Query From Website',
          text: `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nSubject: ${subject}\nMessage: ${message}`,
       };
 
       await transporter.sendMail(mailOptions);
-
       res.status(200).json({ message: 'Email sent successfully!' });
    } catch (error) {
       console.error(error);

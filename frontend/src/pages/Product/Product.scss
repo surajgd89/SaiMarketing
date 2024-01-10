@@ -15,23 +15,13 @@
         align-items: center;
         justify-content: center;
         .custom_Select {
-            border-radius: 4px;
-            padding: 1.2rem 2.4rem;
-            width: 100%;
-            max-width: 300px;
             font-size: 1.6rem;
             font-weight: 600;
             color: var(--primary-dark);
-            border: 2px solid var(--primary-dark);
-            min-height: 5rem;
-            border-radius: 5rem;
+            width: 100%;
+            max-width: 300px;
             outline: 0;
-            appearance: none;
             position: relative;
-            background-color: #fff;
-            background-image: url('../../assets/images/arrow.png');
-            background-repeat: no-repeat;
-            background-position: center right 2.4rem;
 
             @include md {
                 font-size: 1.4rem;
@@ -254,6 +244,11 @@
                     }
                 }
             }
+        }
+
+        .no-products {
+            display: flex;
+            justify-content: center;
         }
     }
 }

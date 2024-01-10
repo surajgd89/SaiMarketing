@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-const ProductItems = ({ filtered_Products, selected_Product, selected_Filter }) => {
+import noProductImg from '../../assets/images/no-product-found.jpg'
 
-   const [active_Products, setActive_Products] = useState(filtered_Products);
+const ProductItems = ({ filterd_Products, selected_Product, selected_Filter }) => {
+
+   const [active_Products, setActive_Products] = useState(filterd_Products);
+
    const [price, setPrice] = useState({});
    const refProductSize = useRef(null);
-
-   useState();
 
    const updatePrice = (id, amt) => {
       setPrice(prevPrice => ({
@@ -24,25 +25,23 @@ const ProductItems = ({ filtered_Products, selected_Product, selected_Filter }) 
       }
    };
 
-
-
+   const triggerd_ProductSize = () => {
+      const sizeItem = document.querySelectorAll('.product__size_item:nth-child(1)');
+      sizeItem.forEach(element => {
+         element.click();
+      });
+   };
 
 
 
    useEffect(() => {
-      const triggerClick = () => {
-         const elements = document.querySelectorAll('.product__size_item:nth-child(1)');
-         elements.forEach(element => {
-            element.click();
-         });
-      };
 
-      triggerClick();
+      triggerd_ProductSize();
 
-      setActive_Products(filtered_Products.filter((item) => {
+      setActive_Products(filterd_Products.filter((item) => {
 
          if (selected_Product === "All" && selected_Filter === "A") {
-            return filtered_Products
+            return filterd_Products
          }
 
          if (selected_Filter === "A") {
@@ -51,15 +50,14 @@ const ProductItems = ({ filtered_Products, selected_Product, selected_Filter }) 
             return item.foodCategory === selected_Filter || item.bestSeller === selected_Filter
          }
 
-
       }))
 
-   }, [selected_Product, selected_Filter]);
+   }, [filterd_Products, selected_Product, selected_Filter]);
 
 
    return (
       <>
-         {active_Products.map((item) => {
+         {active_Products.length > 0 ? active_Products.map((item) => {
             return (
 
                <div key={item.id} className={`product__item ${item.foodCategory === "V" ? "product__veg" : 'product__non_veg'}  ${item.foodCategory === "N" ? "product__non_veg" : 'product__veg'}  ${item.bestSeller === "Y" ? "product__best_seller" : ""}`}  >
@@ -107,12 +105,15 @@ const ProductItems = ({ filtered_Products, selected_Product, selected_Filter }) 
                   </div>
                </div>
 
+
             );
-         })}
+         }) :
+            <div className="no-products">
+               <img src={noProductImg} alt="No Products Found" />
+            </div>
+         }
       </>
    );
 };
 
 export default ProductItems;
-
-

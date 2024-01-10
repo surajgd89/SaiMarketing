@@ -3,74 +3,71 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Reseller from '../../components/Reseller/Reseller';
 import ProductItems from './ProductItems';
-
-
-
+import Select from 'react-select';
 
 
 function Product() {
 
    const [products, setProducts] = useState([]);
+   const [filterd_Products, setFilterd_Products] = useState([]);
    const [brands, setBrands] = useState([]);
 
-   const [selected_Product, setSelected_Product] = useState("All");
-
-   const [selected_Filter, setSelected_Filter] = useState("A");
-
-   const [filtered_Products, setFiltered_Products] = useState([]);
-   const [filtered_Brands, setFiltered_Brands] = useState([]);
+   const [selected_Product, setSelected_Product] = useState({ label: 'All', value: 'All' });
+   const [selected_Filter, setSelected_Filter] = useState('A');
+   const [product_Options, setProduct_Options] = useState([]);
 
 
-   const brand_Product_Change = (selected) => {
-      setSelected_Product(selected);
 
-      let filtered = selected === "All" ? products : products.filter(item => {
-         return item.brandName === selected;
-      });
-
-      console.log(filtered)
-
-      setFiltered_Products(filtered);
-   }
-
-   const brand_Filter_Change = (selected) => {
-      setSelected_Filter(selected);
-   }
 
 
    useEffect(() => {
-      const brands_Arry = Array.from(new Set(products.map(item => item.brandName)));
-      setFiltered_Brands(brands_Arry);
-   }, [products]);
-
-   useEffect(() => {
-
-      const fetchProducts = async () => {
+      const fetchData = async () => {
          try {
-            const response = await axios.get('http://localhost:3001/api/products');
-            setProducts(response.data);
+            const products_Response = await axios.get('http://localhost:3001/api/products');
+            const brands_Response = await axios.get('http://localhost:3001/api/brands');
+
+            setProducts(products_Response.data);
+            setBrands(brands_Response.data);
+
          } catch (error) {
-            console.error('Error fetching products:', error.message);
+            console.error('Error fetching data:', error.message);
          }
       };
-
-      const fetchBrands = async () => {
-         try {
-            const response = await axios.get('http://localhost:3001/api/brands');
-            setBrands(response.data);
-         } catch (error) {
-            console.error('Error fetching brands:', error.message);
-         }
-      };
-
-      fetchProducts();
-      fetchBrands()
+      fetchData()
    }, []);
 
 
    useEffect(() => {
-      brand_Product_Change("All");
+      const arry = products.map((item) => item.brandName);
+      const new_arry = [...new Set(arry)];
+      const options = [
+         { label: 'All', value: 'All' },
+         ...new_arry.map((value) => ({ label: value, value: value })),
+      ];
+      setProduct_Options(options)
    }, [products]);
+
+
+   const product_Change = (selected_Product) => {
+      setSelected_Product(selected_Product);
+   };
+
+
+   useEffect(() => {
+
+      console.log(selected_Product.value)
+
+      setFilterd_Products(products.filter((item) => {
+         if (selected_Product.value === "All") {
+            return products
+         } else {
+            return selected_Product.value === item.brandName
+         }
+      }))
+
+   }, [products, selected_Product]);
+
+
 
 
    return (
@@ -86,29 +83,22 @@ function Product() {
                </p>
 
                <div className="product__action">
-
-                  <select className="custom_Select" value={selected_Product} onChange={(event) => brand_Product_Change(event.target.value)}>
-                     <option value="All">All</option>
-                     {filtered_Brands.map((item, index) => {
-                        return (
-                           <option key={index} value={item}>
-                              {item}
-                           </option>
-                        )
-                     })}
-                  </select>
-
+                  <Select
+                     className="custom_Select"
+                     defaultValue={selected_Product}
+                     onChange={product_Change}
+                     options={product_Options}
+                  />
                   <div className="custom_Filter">
-                     <div onClick={(event) => brand_Filter_Change("A")} className={`custom_Filter__btn ${selected_Filter === "A" ? "custom_Filter__btn--active" : ""}`}  ><i className="fa-solid fa-check-double"></i>All</div>
-                     <div onClick={(event) => brand_Filter_Change("V")} className={`custom_Filter__btn ${selected_Filter === "V" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-circle-small veg"></i>Veg</div>
-                     <div onClick={(event) => brand_Filter_Change("N")} className={`custom_Filter__btn ${selected_Filter === "N" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-circle-small non-veg"></i>Non-Veg</div>
-                     <div onClick={(event) => brand_Filter_Change("Y")} className={`custom_Filter__btn ${selected_Filter === "Y" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-hashtag"></i>Best Seller</div>
+                     <div onClick={() => setSelected_Filter("A")} className={`custom_Filter__btn ${selected_Filter === "A" ? "custom_Filter__btn--active" : ""}`}  ><i className="fa-solid fa-check-double"></i>All</div>
+                     <div onClick={() => setSelected_Filter("V")} className={`custom_Filter__btn ${selected_Filter === "V" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-circle-small veg"></i>Veg</div>
+                     <div onClick={() => setSelected_Filter("N")} className={`custom_Filter__btn ${selected_Filter === "N" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-circle-small non-veg"></i>Non-Veg</div>
+                     <div onClick={() => setSelected_Filter("Y")} className={`custom_Filter__btn ${selected_Filter === "Y" ? "custom_Filter__btn--active" : ""}`}><i className="fa-solid fa-hashtag"></i>Best Seller</div>
                   </div>
-
                </div>
 
                <div className="product__list">
-                  <ProductItems filtered_Products={filtered_Products} selected_Product={selected_Product} selected_Filter={selected_Filter} />
+                  <ProductItems filterd_Products={filterd_Products} selected_Product={selected_Product.value} selected_Filter={selected_Filter} />
                </div>
 
             </div>
