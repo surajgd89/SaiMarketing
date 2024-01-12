@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "companyName": "Sai Marketing",
+        "companyRating": 4.5,
+        "companyServices": [
+            "Cold Storage Services",
+            "Frozen Food Product Distributors",
+            "HORECA Distributor"
+        ],
+        "companyEmail": "sairam.sr389@gmail.com",
+        "companyMobile": "+919324206327",
+        "companyAddress": [
+            {
+                "address": "1. Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "url": ""
+            },
+
+            {
+                "address": "1. Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "url": ""
+            }
+        ],
+
+        "ownerName": "Dipak Devre",
+        "ownerAbout": "To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth. To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth.",
+        "ownerDesg": "Founder",
+
+        "aboutTitle": "Product Catalogue",
+        "aboutDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations. We help companies innovate faster and build better products, using real user data and rapid iterations.",
+
+        "productsTitle": "Product Catalogue",
+        "productsDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations. We help companies innovate faster and build better products, using real user data and rapid iterations.",
+
+        "resellersTitle": "Wholesale, Retail & Distributor",
+        "resellersDesc": "We help companies innovate faster and build better product, using real user data and rapid iterations. We help companies innovate faster and build better product, using real user data and rapid iterations.",
+
+        "contactTitle": "Product Catalogue",
+        "contactDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations. We help companies innovate faster and build better products, using real user data and rapid iterations."
+    }
+]
