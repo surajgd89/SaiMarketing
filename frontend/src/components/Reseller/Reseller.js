@@ -1,10 +1,7 @@
 
 import './Reseller.scss';
 
-
-
 function Reseller({ brands, profile }) {
-
 
    return (
       <section className="reseller" >
@@ -24,6 +21,5 @@ function Reseller({ brands, profile }) {
       </section>
    )
 }
-
 export default Reseller
 
