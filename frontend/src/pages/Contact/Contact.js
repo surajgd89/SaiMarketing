@@ -1,10 +1,15 @@
 import './Contact.scss'
 import Map from '../../components/Map/Map';
 
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
+
 
 function Contact() {
+
+   const [profile, setProfile] = useState([]);
 
    const [formData, setFormData] = useState({
       name: '',
@@ -18,12 +23,7 @@ function Contact() {
 
    const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
-
-
    };
-
-
-
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -81,13 +81,26 @@ function Contact() {
 
    };
 
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await axios.get('http://localhost:3001/api/profile');
+            setProfile(response.data[0]);
+         } catch (error) {
+            console.error('Error fetching data:', error.message);
+         }
+      };
+      fetchData()
+   }, []);
+
    return (
       <>
          <section className="contact">
             <div className="container">
-               <h1 className="heading">Get In Touch</h1>
+               <h1 className="heading">{profile.contactTitle}</h1>
                <p className="paragraph">
-                  We help companies innovate faster and build better products, using real user data and rapid iterations.
+                  {profile.contactDesc}
                </p>
                <form className="contact__form" onSubmit={handleSubmit}>
                   <div className="form_group area-name">
@@ -120,7 +133,7 @@ function Contact() {
                </form>
             </div>
          </section>
-         <Map />
+         <Map profile={profile} />
       </>
    )
 }

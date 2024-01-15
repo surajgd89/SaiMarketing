@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const products = require('./products.json');
 const brands = require('./brands.json');
+const profile = require('./profile.json');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -49,6 +50,10 @@ app.get('/api/brands', (req, res) => {
 
 app.get('/api/products', (req, res) => {
    res.json(products);
+});
+
+app.get('/api/profile', (req, res) => {
+   res.json(profile);
 });
 
 const PORT = process.env.PORT || 3001;

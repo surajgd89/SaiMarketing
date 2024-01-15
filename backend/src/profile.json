@@ -1,8 +1,7 @@
 [
     {
-        "id": 1,
         "companyName": "Sai Marketing",
-        "companyRating": 4.5,
+        "companyRating": 4.6,
         "companyServices": [
             "Cold Storage Services",
             "Frozen Food Product Distributors",
@@ -10,23 +9,55 @@
         ],
         "companyEmail": "sairam.sr389@gmail.com",
         "companyMobile": "+919324206327",
-        "companyAddress": [
+        "companyGSTIN": "27ALGPD5253P1ZR",
+        "companyLocation": "Mazgaon, Mumbai",
+
+        "companySocial": [
             {
-                "address": "1. Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "networkName": "Facebook",
                 "url": ""
             },
 
             {
-                "address": "1. Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "networkName": "Twitter",
                 "url": ""
+            },
+
+            {
+                "networkName": "LinkedIn",
+                "url": ""
+            },
+
+            {
+                "networkName": "WhatsApp",
+                "url": "https://wa.me/9324206327"
             }
         ],
 
-        "ownerName": "Dipak Devre",
-        "ownerAbout": "To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth. To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth.",
-        "ownerDesg": "Founder",
+        "businessHrs": {
+            "workingDays": "Monday - Saturday",
+            "workingTime": "09:00 am - 07:00 pm",
+            "weekOff": "Sunday"
+        },
 
-        "aboutTitle": "Product Catalogue",
+        "companyAddress": [
+            {
+                "address": "Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.2447597147684!2d72.83786907583581!3d18.964794955453044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf5ceab18ef1%3A0x3a8bd57ee6c4e017!2sSai%20Marketing%20Office!5e0!3m2!1sen!2sin!4v1700565918728!5m2!1sen!2sin",
+                "shortUrl": "https://maps.app.goo.gl/5WCviWKSQe7GWZ136"
+            },
+
+            {
+                "address": "Plot No. 71, Manohar Building, H. K. Marg, Mazgaon, (Near Hamja Tower),Mumbai - 400010",
+                "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.2447597147684!2d72.83786907583581!3d18.964794955453044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf5ceab18ef1%3A0x3a8bd57ee6c4e017!2sSai%20Marketing%20Office!5e0!3m2!1sen!2sin!4v1700565918728!5m2!1sen!2sin",
+                "shortUrl": "https://maps.app.goo.gl/5WCviWKSQe7GWZ136"
+            }
+        ],
+        "ownerName": "Dipak Devre",
+        "ownerDesg": "Founder",
+        "ownerAbout": "To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth. To become best dealership in town by implementing effective communication & strong review mechanism towards sustained business growth.",
+
+        "aboutTitle": "About Us",
         "aboutDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations. We help companies innovate faster and build better products, using real user data and rapid iterations.",
 
         "productsTitle": "Product Catalogue",
@@ -35,7 +66,7 @@
         "resellersTitle": "Wholesale, Retail & Distributor",
         "resellersDesc": "We help companies innovate faster and build better product, using real user data and rapid iterations. We help companies innovate faster and build better product, using real user data and rapid iterations.",
 
-        "contactTitle": "Product Catalogue",
-        "contactDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations. We help companies innovate faster and build better products, using real user data and rapid iterations."
+        "contactTitle": "Get In Touch",
+        "contactDesc": "We help companies innovate faster and build better products, using real user data and rapid iterations."
     }
 ]

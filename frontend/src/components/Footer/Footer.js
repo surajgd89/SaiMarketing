@@ -1,53 +1,114 @@
 import './Footer.scss'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Footer() {
+
+   const [profile, setProfile] = useState([]);
+
+   const [workingDays, setWorkingDays] = useState();
+   const [workingTime, setWorkingTime] = useState();
+   const [weekOff, setWeekOff] = useState();
+
+   const [facebookURL, setFacebookURL] = useState();
+   const [twitterURL, setTwitterURL] = useState();
+   const [linkedInURL, setLinkedInURL] = useState();
+   const [whatsAppURL, setWhatsAppURL] = useState();
+
+   const [address, setAddress] = useState();
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await axios.get('http://localhost:3001/api/profile');
+            setProfile(response.data[0]);
+         } catch (error) {
+            console.error('Error fetching data:', error.message);
+         }
+      };
+      fetchData()
+   }, []);
+
+
+   useEffect(() => {
+      if (profile && profile.businessHrs) {
+         setWorkingDays(profile.businessHrs.workingDays)
+         setWorkingTime(profile.businessHrs.workingTime)
+         setWeekOff(profile.businessHrs.weekOff)
+      }
+
+      if (profile && profile.companyAddress) {
+         setAddress(profile.companyAddress[0].address)
+      }
+
+      if (profile && profile.companySocial) {
+
+
+         profile.companySocial.map((item) => {
+            if (item.networkName === "Facebook") {
+               setFacebookURL(item.url)
+            }
+
+            if (item.networkName === "Twitter") {
+               setTwitterURL(item.url)
+            }
+
+            if (item.networkName === "LinkedIn") {
+               setLinkedInURL(item.url)
+            }
+
+            if (item.networkName === "WhatsApp") {
+               setWhatsAppURL(item.url)
+            }
+         })
+
+      }
+
+   }, [profile]);
+
    return (
       <footer className="footer">
          <div className="container">
             <div className="footer__area">
                <div className="footer__about ">
-                  <h3 className="footer__head">About Sai Marketing</h3>
-                  <p className="footer__para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, earum
-                     similique quasi vel
-                     molestiae
-                     veniam facere enim explicabo mollitia perspiciatis, laboriosam dolore. Eaque sed eveniet, soluta
-                     asperiores
-                     quidem adipisci vero.</p>
+                  <h3 className="footer__head">About {profile.companyName}</h3>
+                  <p className="footer__para">{profile.aboutDesc}</p>
                </div>
                <div className="footer__address ">
                   <h3 className="footer__head">Address</h3>
-                  <p className="footer__para">Plot No. 71, Manohar Building,<br /> H. K. Marg, Mazgaon, (Near Hamja Tower)<br />
-                     Mumbai - 400010</p>
-                  <p className="footer__para">GSTIN - 27ALGPD5253P1ZR</p>
+                  <p className="footer__para">{address}</p>
+                  <p className="footer__para">GSTIN - {profile.companyGSTIN}</p>
                   <div className="footer__social">
-                     <a href="#" className="footer__social_link">
+
+                     <a href={facebookURL} target='_blank' className="footer__social_link">
                         <i className="fa-brands fa-facebook-square"></i>
                      </a>
-                     <a href="#" className="footer__social_link">
+                     <a href={twitterURL} target='_blank' className="footer__social_link">
                         <i className="fa-brands fa-twitter-square"></i>
                      </a>
-                     <a href="#" className="footer__social_link">
+                     <a href={linkedInURL} target='_blank' className="footer__social_link">
                         <i className="fa-brands fa-linkedin"></i>
                      </a>
-                     <a href="#" className="footer__social_link">
+                     <a href={whatsAppURL} target='_blank' className="footer__social_link">
                         <i className="fa-brands fa-whatsapp-square"></i>
                      </a>
+
                   </div>
                </div>
                <div className="footer__bizhrs ">
                   <h3 className="footer__head">Business Hrs</h3>
                   <p className="footer__para">
-                     Monday - Saturday
-                     <small>(09:00 am - 07:00 pm)</small>
+                     {workingDays}
+                     <small>{`(${workingTime})`}</small>
                   </p>
                   <p className="footer__para">
-                     Sunday
+                     {weekOff}
                      <small>Closed</small>
                   </p>
                </div>
             </div>
             <div className="footer__copy ">
-               Copyright © 2023. Sai Marketing. All rights reserved.
+               Copyright © 2023. {profile.companyName}. All rights reserved.
             </div>
          </div >
       </footer >

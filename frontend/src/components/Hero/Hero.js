@@ -1,45 +1,100 @@
 import './Hero.scss'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Hero() {
+   const [profile, setProfile] = useState([]);
+   const [services, setServices] = useState([]);
+   const [shortURL, setShortURL] = useState([]);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+
+            const response = await axios.get('http://localhost:3001/api/profile');
+            setProfile(response.data[0]);
+
+         } catch (error) {
+            console.error('Error fetching data:', error.message);
+         }
+      };
+      fetchData()
+   }, []);
+
+   useEffect(() => {
+      if (profile && profile.companyServices) {
+         setServices(profile.companyServices);
+      }
+
+      if (profile && profile.companyAddress) {
+         setShortURL(profile.companyAddress[0].shortUrl);
+      }
+
+   }, [profile]);
+
+   const renderStars = (rating) => {
+      const maxStars = 5;
+      const fullStars = Math.min(Math.floor(rating), maxStars);
+      const hasHalfStar = rating % 1 !== 0;
+
+      const stars = [];
+
+      for (let i = 0; i < fullStars; i++) {
+         stars.push(<i className="fa-solid fa-star" key={i}></i>);
+      }
+
+      if (hasHalfStar && fullStars < maxStars) {
+         stars.push(<i className="fa-solid fa-star-half-stroke" key={fullStars}></i>);
+      }
+
+      const emptyStars = maxStars - fullStars - (hasHalfStar ? 1 : 0);
+      for (let i = 0; i < emptyStars; i++) {
+         stars.push(<i className="fa-regular fa-star" key={fullStars + i + (hasHalfStar ? 1 : 0)}></i>);
+      }
+
+      return stars;
+   };
+
    return (
       // HERO 
       <section className="hero">
          <div className="hero__info">
             <small className="hero__label">Welcome to</small>
-            <h1 className="hero__title">Sai Marketing</h1>
+            <h1 className="hero__title">{profile.companyName}</h1>
             <div className="hero__rating">
                <span className="hero__rating_icon">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                  <i className="fa-regular fa-star"></i>
+                  {renderStars(profile.companyRating)}
                </span>
-               <span className="hero__rating_txt">4.5 / 5</span>
+               <span className="hero__rating_txt">{profile.companyRating} / 5</span>
             </div>
             <div className="hero__tags">
-               <span className="hero__tags_item">Cold Storage Services</span>
-               <span className="hero__tags_item">Frozen Food Product Distributors</span>
-               <span className="hero__tags_item">HORECA Distributor</span>
+               {
+                  services.map((item) => {
+                     return (
+                        <span className="hero__tags_item" key={item}>{item}</span>
+                     )
+                  })
+               }
+
             </div>
          </div>
          <div className="hero__contact">
             <div className="hero__contact_action">
-               <a href="mailto:sairam.sr389@gmail.com" className="hero__contact_link">
+               <a href={`mailto:${profile.companyEmail}`} className="hero__contact_link">
                   <i className="fa-light fa-envelope"></i>
-                  <span>sairam.sr389@gmail.com</span>
+                  <span>{profile.companyEmail}</span>
                </a>
-               <a href="tel:+919324206327" className="hero__contact_link">
+               <a href={`tel:${profile.companyMobile}`} className="hero__contact_link">
                   <i className="fa-light fa-phone"></i>
-                  <span>+91 9324206327</span>
+                  <span>{profile.companyMobile}</span>
                </a>
-               <a href="https://maps.app.goo.gl/5WCviWKSQe7GWZ136" className="hero__contact_link">
+               <a href={shortURL} target='_blank' className="hero__contact_link">
                   <i className="fa-light fa-map-marker-alt"></i>
-                  <span>Mazgaon, Mumbai</span>
+                  <span>{profile.companyLocation}</span>
                </a>
             </div>
          </div>
-      </section>
+      </section >
    )
 }
 

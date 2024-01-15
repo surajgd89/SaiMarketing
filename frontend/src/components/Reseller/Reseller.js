@@ -3,17 +3,15 @@ import './Reseller.scss';
 
 
 
-function Reseller({ brands }) {
+function Reseller({ brands, profile }) {
 
 
    return (
       <section className="reseller" >
          <div className="container">
-            <h1 className="heading">Wholesale, Retail & Distributor</h1>
+            <h1 className="heading">{profile.resellersTitle}</h1>
             <p className="paragraph">
-               We help companies innovate faster and build better product, using real user data and rapid iterations. We
-               help
-               companies innovate faster and build better product, using real user data and rapid iterations.
+               {profile.resellersDesc}
             </p>
             <div className="reseller__list">
                {brands.map((item) => {

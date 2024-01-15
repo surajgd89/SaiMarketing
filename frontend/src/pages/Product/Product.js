@@ -6,18 +6,29 @@ import ProductItems from './ProductItems';
 import Select from 'react-select';
 
 
+
+
 function Product() {
 
    const [products, setProducts] = useState([]);
    const [filterd_Products, setFilterd_Products] = useState([]);
    const [brands, setBrands] = useState([]);
+   const [profile, setProfile] = useState([]);
 
    const [selected_Product, setSelected_Product] = useState({ label: 'All', value: 'All' });
    const [selected_Filter, setSelected_Filter] = useState('A');
    const [product_Options, setProduct_Options] = useState([]);
 
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
 
-
+         } catch (error) {
+            console.error('Error fetching data:', error.message);
+         }
+      };
+      fetchData()
+   }, []);
 
 
    useEffect(() => {
@@ -25,9 +36,12 @@ function Product() {
          try {
             const products_Response = await axios.get('http://localhost:3001/api/products');
             const brands_Response = await axios.get('http://localhost:3001/api/brands');
+            const profile_Response = await axios.get('http://localhost:3001/api/profile');
+
 
             setProducts(products_Response.data);
             setBrands(brands_Response.data);
+            setProfile(profile_Response.data[0]);
 
          } catch (error) {
             console.error('Error fetching data:', error.message);
@@ -74,12 +88,10 @@ function Product() {
       <>
          <section className="product">
             <div className="container">
-               <h1 className="heading">Product Catalogue</h1>
+               <h1 className="heading">{profile.productsTitle}</h1>
 
                <p className="paragraph">
-                  We help companies innovate faster and build better product, using real user data and rapid iterations. We
-                  help
-                  companies innovate faster and build better product, using real user data and rapid iterations.
+                  {profile.productsDesc}
                </p>
 
                <div className="product__action">
@@ -103,7 +115,7 @@ function Product() {
 
             </div>
          </section >
-         <Reseller brands={brands} />
+         <Reseller brands={brands} profile={profile} />
       </>
    )
 }
