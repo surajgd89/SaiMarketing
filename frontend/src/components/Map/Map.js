@@ -6,15 +6,11 @@ function Map({ profile }) {
    const [address, setAddress] = useState([]);
 
 
-
-
    useEffect(() => {
 
       if (profile && profile.companyAddress) {
          setAddress(profile.companyAddress)
       }
-
-
 
    }, [profile]);
 
@@ -29,7 +25,8 @@ function Map({ profile }) {
                      <i className="fa-regular fa-building"></i> Our Office
                   </div>
                   {address.map((item, index) => (
-                     <iframe
+
+                     index === 0 && <iframe
                         key={index}
                         src={item.mapUrl}
                         width="100%"
@@ -46,7 +43,7 @@ function Map({ profile }) {
                      <i className="fa-regular fa-temperature-snow"></i> Our Cold Storage
                   </div>
                   {address.map((item, index) => (
-                     <iframe
+                     index === 1 && <iframe
                         key={index}
                         src={item.mapUrl}
                         width="100%"
