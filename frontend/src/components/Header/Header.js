@@ -24,7 +24,7 @@ function Header() {
       const fetchData = async () => {
          try {
 
-            const response = await axios.get('http://localhost:3001/api/profile');
+            const response = await axios.get('/api/profile');
             setProfile(response.data[0]);
 
          } catch (error) {

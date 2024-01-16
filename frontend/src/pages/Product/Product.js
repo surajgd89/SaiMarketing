@@ -34,10 +34,9 @@ function Product() {
    useEffect(() => {
       const fetchData = async () => {
          try {
-            const products_Response = await axios.get('http://localhost:3001/api/products');
-            const brands_Response = await axios.get('http://localhost:3001/api/brands');
-            const profile_Response = await axios.get('http://localhost:3001/api/profile');
-
+            const products_Response = await axios.get('/api/products');
+            const brands_Response = await axios.get('/api/brands');
+            const profile_Response = await axios.get('/api/profile');
 
             setProducts(products_Response.data);
             setBrands(brands_Response.data);
