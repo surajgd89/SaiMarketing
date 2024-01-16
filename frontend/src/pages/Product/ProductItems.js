@@ -61,7 +61,7 @@ const ProductItems = ({ filterd_Products, selected_Product, selected_Filter }) =
             return (
 
                <div key={item.id} className={`product__item ${item.foodCategory === "V" ? "product__veg" : 'product__non_veg'}  ${item.foodCategory === "N" ? "product__non_veg" : 'product__veg'}  ${item.bestSeller === "Y" ? "product__best_seller" : ""}`}  >
-                  <a href={item.productLink} target="_blank" className="product__details"><i className="fa-regular fa-arrow-up-right-from-square"></i></a>
+                  <a href={item.productLink} target="_blank" rel="noreferrer" className="product__details"><i className="fa-regular fa-arrow-up-right-from-square"></i></a>
                   <div className="product__img">
                      <img src={process.env.PUBLIC_URL + item.productImage} alt="" />
                   </div>

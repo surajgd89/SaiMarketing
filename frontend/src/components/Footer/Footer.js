@@ -60,6 +60,8 @@ function Footer() {
             if (item.networkName === "WhatsApp") {
                setWhatsAppURL(item.url)
             }
+
+            return false
          })
 
       }
@@ -80,16 +82,16 @@ function Footer() {
                   <p className="footer__para">GSTIN - {profile.companyGSTIN}</p>
                   <div className="footer__social">
 
-                     <a href={facebookURL} target='_blank' className="footer__social_link">
+                     <a href={facebookURL} target='_blank' rel="noreferrer" className="footer__social_link">
                         <i className="fa-brands fa-facebook-square"></i>
                      </a>
-                     <a href={twitterURL} target='_blank' className="footer__social_link">
+                     <a href={twitterURL} target='_blank' rel="noreferrer" className="footer__social_link">
                         <i className="fa-brands fa-twitter-square"></i>
                      </a>
-                     <a href={linkedInURL} target='_blank' className="footer__social_link">
+                     <a href={linkedInURL} target='_blank' rel="noreferrer" className="footer__social_link">
                         <i className="fa-brands fa-linkedin"></i>
                      </a>
-                     <a href={whatsAppURL} target='_blank' className="footer__social_link">
+                     <a href={whatsAppURL} target='_blank' rel="noreferrer" className="footer__social_link">
                         <i className="fa-brands fa-whatsapp-square"></i>
                      </a>
 
