@@ -1,6 +1,6 @@
 import './Footer.scss'
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/helpers';
+import { getProfile } from '../../services/api';
 
 function Footer() {
 
@@ -17,8 +17,17 @@ function Footer() {
 
    const [address, setAddress] = useState();
 
+
    useEffect(() => {
-      setProfile(getProfile);
+      const fetchProfile = async () => {
+         try {
+            const data = await getProfile();
+            setProfile(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+      fetchProfile();
    }, []);
 
 

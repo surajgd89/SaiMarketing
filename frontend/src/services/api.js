@@ -1,14 +1,13 @@
 import axios from 'axios';
 import API_URL from './helpers';
 
-const api = axios.create({
-   API_URL,
-});
+
 
 export const getProfile = async () => {
    try {
-      const response = await api.get('/api/profile');
+      const response = await axios.get(`${API_URL}/api/profile`);
       return response.data[0];
+
    } catch (error) {
       console.error('Error fetching profile data:', error.message);
       throw error;
@@ -18,7 +17,7 @@ export const getProfile = async () => {
 
 export const getProducts = async () => {
    try {
-      const response = await api.get('/api/products');
+      const response = await axios.get(`${API_URL}/api/products`);
       return response.data;
    } catch (error) {
       console.error('Error fetching products data:', error.message);
@@ -29,10 +28,20 @@ export const getProducts = async () => {
 
 export const getBrands = async () => {
    try {
-      const response = await api.get('/api/brands');
+      const response = await axios.get(`${API_URL}/api/brands`);
       return response.data;
    } catch (error) {
       console.error('Error fetching brands data:', error.message);
       throw error;
    }
 };
+
+export const sendEmail = async (formData) => {
+   try {
+      await axios.post(`${API_URL}/api/send-email`, formData);
+   } catch (error) {
+      console.error('Error sending email:', error);
+   }
+};
+
+

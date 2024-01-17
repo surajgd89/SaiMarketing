@@ -1,5 +1,4 @@
 const express = require('express');
-require('dotenv').config();
 const products = require('./products.json');
 const brands = require('./brands.json');
 const profile = require('./profile.json');

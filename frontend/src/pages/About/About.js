@@ -1,7 +1,7 @@
 import './About.scss';
 import ProfileImg from "../../assets/images/dipak-devre.jpg"
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/helpers';
+import { getProfile } from '../../services/api';
 
 
 function About() {
@@ -9,7 +9,15 @@ function About() {
    const [profile, setProfile] = useState([]);
 
    useEffect(() => {
-      setProfile(getProfile);
+      const fetchProfile = async () => {
+         try {
+            const data = await getProfile();
+            setProfile(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+      fetchProfile();
    }, []);
 
 

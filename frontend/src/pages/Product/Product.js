@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Reseller from '../../components/Reseller/Reseller';
 import ProductItems from './ProductItems';
 import Select from 'react-select';
-import { getProfile, getProducts, getBrands } from '../../services/helpers';
+import { getProfile, getProducts, getBrands } from '../../services/api';
 
 
 
@@ -18,11 +18,46 @@ function Product() {
    const [selected_Filter, setSelected_Filter] = useState('A');
    const [product_Options, setProduct_Options] = useState([]);
 
+
    useEffect(() => {
-      setProfile(getProfile);
-      setProducts(getProducts);
-      setBrands(getBrands);
+      const fetchProfile = async () => {
+         try {
+            const data = await getProfile();
+            setProfile(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+
+      const fetchProducts = async () => {
+         try {
+            const data = await getProducts();
+            setProducts(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+
+      const fetchBrands = async () => {
+         try {
+            const data = await getBrands();
+            setBrands(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+
+      fetchProfile();
+      fetchProducts();
+      fetchBrands();
+
    }, []);
+
+
+
+
+
+
 
 
    useEffect(() => {

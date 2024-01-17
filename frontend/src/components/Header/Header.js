@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import './Header.scss'
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/helpers';
+import { getProfile } from '../../services/api';
 
 function Header() {
    const [profile, setProfile] = useState([]);
@@ -20,8 +20,17 @@ function Header() {
    }
 
 
+
    useEffect(() => {
-      setProfile(getProfile);
+      const fetchProfile = async () => {
+         try {
+            const data = await getProfile();
+            setProfile(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+      fetchProfile();
    }, []);
 
    useEffect(() => {

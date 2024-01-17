@@ -2,7 +2,7 @@ import './Contact.scss'
 import Map from '../../components/Map/Map';
 
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/helpers';
+import { getProfile, sendEmail } from '../../services/api';
 
 
 
@@ -64,16 +64,16 @@ function Contact() {
          message: formData.message.trim() ? '' : 'Message is required',
       }));
 
-
       if (!Object.values(errors).some((error) => error)) {
-         //console.log('Form submitted:', formData);
-         try {
-            await axios.post('http://localhost:3001/api/send-email', formData);
-            setFormData({ name: '', email: '', mobile: '', subject: '', message: '', })
-            //console.log('Email sent successfully!');
-         } catch (error) {
-            console.error('Error sending email:', error);
-         }
+         const postEmail = async () => {
+            try {
+               await sendEmail(formData);
+               setFormData({ name: '', email: '', mobile: '', subject: '', message: '', })
+            } catch (error) {
+               console.log(error)
+            }
+         };
+         postEmail();
 
       } else {
          console.log('Form has errors. Please fix them before submitting.');
@@ -83,8 +83,17 @@ function Contact() {
 
 
 
+
    useEffect(() => {
-      setProfile(getProfile);
+      const fetchProfile = async () => {
+         try {
+            const data = await getProfile();
+            setProfile(data);
+         } catch (error) {
+            console.log(error)
+         }
+      };
+      fetchProfile();
    }, []);
 
 
