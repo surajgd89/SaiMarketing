@@ -56,10 +56,10 @@ function Header() {
       // HEADER 
       <header className="header">
          <div className="container">
-            <a href="#" className="header__brand">
+            <NavLink to="/" className="header__brand">
                <small>{flName}</small>
                <span ref={cNameRef_Ref}>{profile.companyName}</span>
-            </a>
+            </NavLink>
             <span className="header__toggle" onClick={menuToggle}><i className="fa-regular fa-bars"></i></span>
             <nav className="header__nav" ref={headerNav_Ref}>
                <NavLink to="/" onClick={redirectNav} className={({ isActive }) => isActive ? `header__nav_link header__nav_link--active` : "header__nav_link"}>About</NavLink>

@@ -88,7 +88,7 @@ function Hero() {
                   <i className="fa-light fa-phone"></i>
                   <span>{profile.companyMobile}</span>
                </a>
-               <a href={shortURL} target='_blank' className="hero__contact_link">
+               <a href={shortURL} target='_blank' rel="noreferrer" className="hero__contact_link">
                   <i className="fa-light fa-map-marker-alt"></i>
                   <span>{profile.companyLocation}</span>
                </a>
