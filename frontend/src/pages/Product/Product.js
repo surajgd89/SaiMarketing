@@ -1,10 +1,9 @@
 import './Product.scss'
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Reseller from '../../components/Reseller/Reseller';
 import ProductItems from './ProductItems';
 import Select from 'react-select';
-
+import { getProfile, getProducts, getBrands } from '../../services/helpers';
 
 
 
@@ -20,33 +19,9 @@ function Product() {
    const [product_Options, setProduct_Options] = useState([]);
 
    useEffect(() => {
-      const fetchData = async () => {
-         try {
-
-         } catch (error) {
-            console.error('Error fetching data:', error.message);
-         }
-      };
-      fetchData()
-   }, []);
-
-
-   useEffect(() => {
-      const fetchData = async () => {
-         try {
-            const products_Response = await axios.get('/api/products');
-            const brands_Response = await axios.get('/api/brands');
-            const profile_Response = await axios.get('/api/profile');
-
-            setProducts(products_Response.data);
-            setBrands(brands_Response.data);
-            setProfile(profile_Response.data[0]);
-
-         } catch (error) {
-            console.error('Error fetching data:', error.message);
-         }
-      };
-      fetchData()
+      setProfile(getProfile);
+      setProducts(getProducts);
+      setBrands(getBrands);
    }, []);
 
 

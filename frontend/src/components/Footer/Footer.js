@@ -1,6 +1,6 @@
 import './Footer.scss'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getProfile } from '../../services/helpers';
 
 function Footer() {
 
@@ -18,15 +18,7 @@ function Footer() {
    const [address, setAddress] = useState();
 
    useEffect(() => {
-      const fetchData = async () => {
-         try {
-            const response = await axios.get('/api/profile');
-            setProfile(response.data[0]);
-         } catch (error) {
-            console.error('Error fetching data:', error.message);
-         }
-      };
-      fetchData()
+      setProfile(getProfile);
    }, []);
 
 

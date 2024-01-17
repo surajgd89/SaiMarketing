@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import './Header.scss'
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getProfile } from '../../services/helpers';
 
 function Header() {
    const [profile, setProfile] = useState([]);
@@ -21,17 +21,7 @@ function Header() {
 
 
    useEffect(() => {
-      const fetchData = async () => {
-         try {
-
-            const response = await axios.get('/api/profile');
-            setProfile(response.data[0]);
-
-         } catch (error) {
-            console.error('Error fetching data:', error.message);
-         }
-      };
-      fetchData()
+      setProfile(getProfile);
    }, []);
 
    useEffect(() => {
