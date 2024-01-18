@@ -1,7 +1,8 @@
 const express = require('express');
-const products = require('./products.json');
-const brands = require('./brands.json');
-const profile = require('./profile.json');
+require('dotenv').config();
+const products = require('./data/products.json');
+const brands = require('./data/brands.json');
+const profile = require('./data/profile.json');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,8 +15,6 @@ app.use(bodyParser.json());
 app.post('/api/send-email', async (req, res) => {
    try {
       const { name, email, mobile, subject, message } = req.body;
-
-      console.log(req.body)
 
       const transporter = nodemailer.createTransport({
          host: "smtp.gmail.com",
@@ -55,7 +54,7 @@ app.get('/api/profile', (req, res) => {
    res.json(profile);
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
    console.log(`Server is running on port ${PORT}`);
 });

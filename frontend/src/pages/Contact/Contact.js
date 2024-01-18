@@ -110,27 +110,27 @@ function Contact() {
                <form className="contact__form" onSubmit={handleSubmit}>
                   <div className="form_group area-name">
                      <label htmlFor="name" className="form_label">Name</label>
-                     <input type="text" id='name' className="form_control" name='name' value={formData.name} onChange={handleChange} />
+                     <input type="text" id='name' className="form_control" name='name' autoComplete='false' value={formData.name} onChange={handleChange} />
                      <span className="error">{errors.name}</span>
                   </div>
                   <div className="form_group area-email">
                      <label htmlFor="email" className="form_label">Email</label>
-                     <input type="text" id='email' className="form_control" name='email' value={formData.email} onChange={handleChange} />
+                     <input type="text" id='email' className="form_control" name='email' autoComplete='false' value={formData.email} onChange={handleChange} />
                      <span className="error">{errors.email}</span>
                   </div>
                   <div className="form_group area-mobile">
                      <label htmlFor="mobile" className="form_label">Mobile</label>
-                     <input type="text" id='mobile' className="form_control" name='mobile' value={formData.mobile} onChange={handleChange} />
+                     <input type="text" id='mobile' className="form_control" name='mobile' autoComplete='false' value={formData.mobile} onChange={handleChange} />
                      <span className="error">{errors.mobile}</span>
                   </div>
                   <div className="form_group area-subject">
                      <label htmlFor="subject" className="form_label">Subject</label>
-                     <input type="text" id="subject" className="form_control" name='subject' value={formData.subject} onChange={handleChange} />
+                     <input type="text" id="subject" className="form_control" name='subject' autoComplete='false' value={formData.subject} onChange={handleChange} />
                      <span className="error">{errors.subject}</span>
                   </div>
                   <div className="form_group area-message">
                      <label htmlFor="message" className="form_label">Message</label>
-                     <textarea id="message" rows="4" className="form_control" name='message' value={formData.message} onChange={handleChange}></textarea>
+                     <textarea id="message" rows="4" className="form_control" name='message' autoComplete='false' value={formData.message} onChange={handleChange}></textarea>
                      <span className="error">{errors.message}</span>
                   </div>
                   <button type="submit" className="btn_send_message area-send"><i className="fa-light fa-paper-plane"></i>Send

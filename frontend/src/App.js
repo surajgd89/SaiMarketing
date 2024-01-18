@@ -52,7 +52,7 @@ function App() {
     }
 
 
-  }, []);
+  }, [profile, rootColors]);
 
 
   return (
@@ -67,7 +67,6 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Routes>
         <Footer />
-
       </>
 
 
