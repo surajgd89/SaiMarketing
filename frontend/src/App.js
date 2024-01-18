@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer';
 import Loader from './components/Loader/Loader';
 import { fetchData } from './services/api';
 import { useEffect, useState } from 'react';
-import { FloatingWhatsApp } from 'react-floating-whatsapp'
+
 
 function App() {
 
@@ -67,7 +67,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Routes>
         <Footer />
-        <FloatingWhatsApp phoneNumber={profile.companyMobile} accountName={profile.companyName} />
+
       </>
 
 
