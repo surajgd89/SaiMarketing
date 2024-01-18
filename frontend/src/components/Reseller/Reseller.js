@@ -11,9 +11,9 @@ function Reseller({ brands, profile }) {
                {profile.resellersDesc}
             </p>
             <div className="reseller__list">
-               {brands.map((item) => {
+               {brands.map((item, index) => {
                   return (
-                     <span className="reseller__list_item" key={item.id}><img src={process.env.PUBLIC_URL + item.brandLogo} alt={item.brandName} /></span>
+                     <span className="reseller__list_item" key={index}><img src={process.env.PUBLIC_URL + item.brandLogo} alt={item.brandName} /></span>
                   )
                })}
             </div>

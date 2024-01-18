@@ -56,10 +56,6 @@ function Product() {
 
 
 
-
-
-
-
    useEffect(() => {
       const arry = products.map((item) => item.brandName);
       const new_arry = [...new Set(arry)];
@@ -78,7 +74,6 @@ function Product() {
 
    useEffect(() => {
 
-      console.log(selected_Product.value)
 
       setFilterd_Products(products.filter((item) => {
          if (selected_Product.value === "All") {

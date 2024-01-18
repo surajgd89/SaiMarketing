@@ -1,7 +1,6 @@
 import axios from 'axios';
-import API_URL from './helpers';
 
-
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const getProfile = async () => {
    try {

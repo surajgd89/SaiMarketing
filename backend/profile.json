@@ -1,5 +1,12 @@
 [
     {
+        "colorTheme": {
+            "primary-dark": "#3c4ef3",
+            "primary-light": "#eceeff",
+            "secondary-dark": "#050520",
+            "secondary-light": "#4a4f78"
+        },
+
         "companyName": "Sai Marketing",
         "companyRating": 4.6,
         "companyServices": [
@@ -11,7 +18,6 @@
         "companyMobile": "+919324206327",
         "companyGSTIN": "27ALGPD5253P1ZR",
         "companyLocation": "Mazgaon, Mumbai",
-
         "companySocial": [
             {
                 "networkName": "Facebook",

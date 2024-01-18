@@ -1,90 +1,75 @@
 [
     {
-        "id": 1,
         "brandName": "ITC",
         "brandLogo": "/images/brands/itc.png"
     },
 
     {
-        "id": 2,
         "brandName": "Gadre",
         "brandLogo": "/images/brands/gadre.png"
     },
 
     {
-        "id": 3,
         "brandName": "Godrej",
         "brandLogo": "/images/brands/godrej.png"
     },
 
     {
-        "id": 4,
         "brandName": "Milki Mist",
         "brandLogo": "/images/brands/milki-mist.png"
     },
 
     {
-        "id": 5,
         "brandName": "Iscon Balaji",
         "brandLogo": "/images/brands/iscon-balaji.png"
     },
 
     {
-        "id": 6,
         "brandName": "Havmore",
         "brandLogo": "/images/brands/havmore.png"
     },
 
     {
-        "id": 7,
         "brandName": "Hy Fun",
         "brandLogo": "/images/brands/hy-fun.png"
     },
 
     {
-        "id": 8,
         "brandName": "Bangur",
         "brandLogo": "/images/brands/bangur.png"
     },
 
     {
-        "id": 9,
         "brandName": "Tasty Fresh",
         "brandLogo": "/images/brands/tasty-fresh.png"
     },
 
     {
-        "id": 10,
         "brandName": "Haldirams",
         "brandLogo": "/images/brands/haldirams.png"
     },
 
     {
-        "id": 11,
         "brandName": "Seths",
         "brandLogo": "/images/brands/seths.png"
     },
 
     {
-        "id": 12,
         "brandName": "Meatzza",
         "brandLogo": "/images/brands/meatzza.png"
     },
 
     {
-        "id": 13,
         "brandName": "Total",
         "brandLogo": "/images/brands/total.png"
     },
 
     {
-        "id": 14,
         "brandName": "Amul",
         "brandLogo": "/images/brands/amul.png"
     },
 
     {
-        "id": 15,
         "brandName": "Goeld",
         "brandLogo": "/images/brands/goeld.png"
     }
