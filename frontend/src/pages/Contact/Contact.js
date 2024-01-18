@@ -11,6 +11,7 @@ function Contact() {
 
    const [profile, setProfile] = useState([]);
 
+
    const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -65,6 +66,7 @@ function Contact() {
       }));
 
       if (!Object.values(errors).some((error) => error)) {
+
          const postEmail = async () => {
             try {
                await sendEmail(formData);
@@ -80,6 +82,12 @@ function Contact() {
       }
 
    };
+
+
+
+
+
+
 
 
 
@@ -133,7 +141,7 @@ function Contact() {
                      <textarea id="message" rows="4" className="form_control" name='message' autoComplete='false' value={formData.message} onChange={handleChange}></textarea>
                      <span className="error">{errors.message}</span>
                   </div>
-                  <button type="submit" className="btn_send_message area-send"><i className="fa-light fa-paper-plane"></i>Send
+                  <button type="submit" className="btn_send_message area-send" ><i className="fa-light fa-paper-plane"></i>Send
                      Message</button>
                </form>
             </div>

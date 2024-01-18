@@ -21,9 +21,10 @@ function App() {
     const initData = async () => {
 
       try {
+        setIsLoading(false);
         const data = await fetchData();
         setProfile(data.getProfile);
-        setIsLoading(false);
+
       } catch (error) {
         console.error('Error fetching data:', error.message);
         setIsLoading(true);
@@ -32,9 +33,6 @@ function App() {
     };
     initData();
   }, []);
-
-
-
 
 
 
