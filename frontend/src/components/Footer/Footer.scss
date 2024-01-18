@@ -4,6 +4,7 @@
 .footer {
     background: var(--secondary-dark);
     padding: 5rem 2rem;
+    @include fadeIn;
 
     .footer__area {
         display: grid;
@@ -44,9 +45,6 @@
             }
         }
 
-        .footer__about {
-        }
-
         .footer__address {
             .footer__social {
                 display: flex;
@@ -62,9 +60,6 @@
                     }
                 }
             }
-        }
-
-        .footer__bizhrs {
         }
     }
 

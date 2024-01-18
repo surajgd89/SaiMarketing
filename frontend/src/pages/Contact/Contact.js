@@ -2,7 +2,7 @@ import './Contact.scss'
 import Map from '../../components/Map/Map';
 
 import { useEffect, useState } from 'react';
-import { getProfile, sendEmail } from '../../services/api';
+import { fetchData, sendEmail } from '../../services/api';
 
 
 
@@ -85,15 +85,16 @@ function Contact() {
 
 
    useEffect(() => {
-      const fetchProfile = async () => {
+      const initData = async () => {
          try {
-            const data = await getProfile();
-            setProfile(data);
+            const data = await fetchData();
+            setProfile(data.getProfile);
          } catch (error) {
             console.log(error)
          }
       };
-      fetchProfile();
+      initData();
+
    }, []);
 
 

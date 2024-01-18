@@ -3,6 +3,7 @@
 //CONTACT
 .contact {
     padding: 8rem 2rem;
+    @include fadeIn;
 
     @include md {
         padding: 4rem 2rem;

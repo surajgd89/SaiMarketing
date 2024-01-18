@@ -47,3 +47,16 @@
     --secondary-dark: #050520;
     --secondary-light: #4a4f78;
 }
+
+@mixin fadeIn {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

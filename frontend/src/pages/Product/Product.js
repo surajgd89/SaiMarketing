@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Reseller from '../../components/Reseller/Reseller';
 import ProductItems from './ProductItems';
 import Select from 'react-select';
-import { getProfile, getProducts, getBrands } from '../../services/api';
+import { fetchData } from '../../services/api';
 
 
 
@@ -14,42 +14,28 @@ function Product() {
    const [brands, setBrands] = useState([]);
    const [profile, setProfile] = useState([]);
 
+
+
    const [selected_Product, setSelected_Product] = useState({ label: 'All', value: 'All' });
    const [selected_Filter, setSelected_Filter] = useState('A');
    const [product_Options, setProduct_Options] = useState([]);
 
 
+
+
+
    useEffect(() => {
-      const fetchProfile = async () => {
+      const initData = async () => {
          try {
-            const data = await getProfile();
-            setProfile(data);
+            const data = await fetchData();
+            setProfile(data.getProfile);
+            setProducts(data.getProducts);
+            setBrands(data.getBrands);
          } catch (error) {
             console.log(error)
          }
       };
-
-      const fetchProducts = async () => {
-         try {
-            const data = await getProducts();
-            setProducts(data);
-         } catch (error) {
-            console.log(error)
-         }
-      };
-
-      const fetchBrands = async () => {
-         try {
-            const data = await getBrands();
-            setBrands(data);
-         } catch (error) {
-            console.log(error)
-         }
-      };
-
-      fetchProfile();
-      fetchProducts();
-      fetchBrands();
+      initData();
 
    }, []);
 
@@ -89,6 +75,7 @@ function Product() {
 
 
    return (
+
       <>
          <section className="product">
             <div className="container">

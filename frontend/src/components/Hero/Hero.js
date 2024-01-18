@@ -1,6 +1,6 @@
 import './Hero.scss'
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/api';
+import { fetchData } from '../../services/api';
 
 function Hero() {
    const [profile, setProfile] = useState([]);
@@ -9,16 +9,19 @@ function Hero() {
 
 
    useEffect(() => {
-      const fetchProfile = async () => {
+      const initData = async () => {
          try {
-            const data = await getProfile();
-            setProfile(data);
+            const data = await fetchData();
+            setProfile(data.getProfile);
+
          } catch (error) {
             console.log(error)
          }
       };
-      fetchProfile();
+      initData();
+
    }, []);
+
    useEffect(() => {
       if (profile && profile.companyServices) {
          setServices(profile.companyServices);
@@ -82,7 +85,7 @@ function Hero() {
                   <i className="fa-light fa-envelope"></i>
                   <span>{profile.companyEmail}</span>
                </a>
-               <a href={`tel:${profile.companyMobile}`} className="hero__contact_link">
+               <a href={`tel:+91${profile.companyMobile}`} className="hero__contact_link">
                   <i className="fa-light fa-phone"></i>
                   <span>{profile.companyMobile}</span>
                </a>

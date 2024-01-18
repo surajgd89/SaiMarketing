@@ -32,9 +32,7 @@ function Map({ profile }) {
                         width="100%"
                         title={`Our Office ${index + 1}`}
                         height="450"
-                        allowfullscreen="no"
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
                      ></iframe>
                   ))}
                </div>
@@ -49,9 +47,7 @@ function Map({ profile }) {
                         width="100%"
                         title={`Our Cold Storage ${index + 1}`}
                         height="450"
-                        allowfullscreen="no"
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
                      ></iframe>
                   ))}
                </div>

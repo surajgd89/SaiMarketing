@@ -1,39 +1,24 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-export const getProfile = async () => {
+export const fetchData = async () => {
+
    try {
-      const response = await axios.get(`${API_URL}/api/profile`);
-      return response.data[0];
+      const profile_res = await axios.get(`${API_URL}/api/profile`);
+      const products_res = await axios.get(`${API_URL}/api/products`);
+      const brands_res = await axios.get(`${API_URL}/api/brands`);
+      return { "getProfile": profile_res.data[0], "getProducts": products_res.data, "getBrands": brands_res.data };
 
    } catch (error) {
-      console.error('Error fetching profile data:', error.message);
+
+      console.error('Error fetching data:', error.message);
+
       throw error;
    }
 };
 
-
-export const getProducts = async () => {
-   try {
-      const response = await axios.get(`${API_URL}/api/products`);
-      return response.data;
-   } catch (error) {
-      console.error('Error fetching products data:', error.message);
-      throw error;
-   }
-};
-
-
-export const getBrands = async () => {
-   try {
-      const response = await axios.get(`${API_URL}/api/brands`);
-      return response.data;
-   } catch (error) {
-      console.error('Error fetching brands data:', error.message);
-      throw error;
-   }
-};
 
 export const sendEmail = async (formData) => {
    try {

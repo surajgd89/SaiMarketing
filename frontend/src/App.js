@@ -6,44 +6,72 @@ import About from './pages/About/About';
 import Product from './pages/Product/Product';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import { getProfile } from './services/api';
+import Loader from './components/Loader/Loader';
+import { fetchData } from './services/api';
 import { useEffect, useState } from 'react';
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 
 function App() {
 
+  const [profile, setProfile] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [rootColors, setRootColors] = useState({});
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const initData = async () => {
+
       try {
-        const data = await getProfile();
-        setRootColors(data.colorTheme)
+        const data = await fetchData();
+        setProfile(data.getProfile);
+        setIsLoading(false);
       } catch (error) {
-        console.log(error)
+        console.error('Error fetching data:', error.message);
+        setIsLoading(true);
       }
+
     };
-    fetchProfile();
+    initData();
   }, []);
 
+
+
+
+
+
   useEffect(() => {
-    const htmlElement = document.documentElement;
-    Object.keys(rootColors).map(key => {
-      return htmlElement.style.setProperty(`--${key}`, rootColors[key])
-    })
-  }, [rootColors]);
+
+    if (profile) {
+      setRootColors(profile.colorTheme);
+    }
+
+    if (rootColors) {
+      const htmlElement = document.documentElement;
+      Object.keys(rootColors).map(key => {
+        return htmlElement.style.setProperty(`--${key}`, rootColors[key])
+      })
+    }
+
+
+  }, []);
 
 
   return (
-    <>
-      <Hero />
-      <Header />
-      <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="product" element={<Product />} />
-        <Route path="contact" element={<Contact />} />
-      </Routes>
-      <Footer />
-    </>
+
+    isLoading ? <Loader /> :
+      <>
+        < Hero />
+        <Header />
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="product" element={<Product />} />
+          <Route path="contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+        <FloatingWhatsApp phoneNumber={profile.companyMobile} accountName={profile.companyName} />
+      </>
+
+
+
   );
 }
 

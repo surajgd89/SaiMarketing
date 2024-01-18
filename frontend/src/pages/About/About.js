@@ -1,29 +1,32 @@
 import './About.scss';
 import ProfileImg from "../../assets/images/dipak-devre.jpg"
+import Reseller from '../../components/Reseller/Reseller';
 import { useEffect, useState } from 'react';
-import { getProfile } from '../../services/api';
+import { fetchData } from '../../services/api';
 
 
 function About() {
 
    const [profile, setProfile] = useState([]);
+   const [brands, setBrands] = useState([]);
 
    useEffect(() => {
-      const fetchProfile = async () => {
+      const initData = async () => {
          try {
-            const data = await getProfile();
-            setProfile(data);
+            const data = await fetchData();
+            setProfile(data.getProfile);
+            setBrands(data.getBrands);
          } catch (error) {
             console.log(error)
          }
       };
-      fetchProfile();
+      initData();
 
    }, []);
 
 
 
-   return (
+   return (<>
       <section className="about">
          <div className="container">
             <h1 className="heading">{profile.aboutTitle}</h1>
@@ -40,6 +43,8 @@ function About() {
             </div>
          </div>
       </section>
+      <Reseller brands={brands} profile={profile} />
+   </>
    )
 }
 

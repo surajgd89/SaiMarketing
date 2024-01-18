@@ -3,6 +3,7 @@
 //HERO
 .hero {
     background: var(--secondary-dark);
+     @include fadeIn;
 
     .hero__info {
         text-align: center;
