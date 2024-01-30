@@ -22,4 +22,3 @@ function Reseller({ brands, profile }) {
    )
 }
 export default Reseller
-
