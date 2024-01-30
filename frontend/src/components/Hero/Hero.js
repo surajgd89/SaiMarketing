@@ -1,26 +1,11 @@
 import './Hero.scss'
 import { useEffect, useState } from 'react';
-import { fetchData } from '../../services/api';
 
-function Hero() {
-   const [profile, setProfile] = useState([]);
+
+function Hero({ profile }) {
+
    const [services, setServices] = useState([]);
    const [shortURL, setShortURL] = useState([]);
-
-
-   useEffect(() => {
-      const initData = async () => {
-         try {
-            const data = await fetchData();
-            setProfile(data.getProfile);
-
-         } catch (error) {
-            console.log(error)
-         }
-      };
-      initData();
-
-   }, []);
 
    useEffect(() => {
       if (profile && profile.companyServices) {

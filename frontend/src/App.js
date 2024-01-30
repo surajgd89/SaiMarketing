@@ -12,28 +12,31 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
-
-  const [profile, setProfile] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [profile, setProfile] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [products, setProducts] = useState([]);
+
   const [rootColors, setRootColors] = useState({});
 
+
+  const initData = async () => {
+    try {
+      const data = await fetchData();
+      setProfile(data.getProfile);
+      setBrands(data.getBrands);
+      setProducts(data.getProducts);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+      setIsLoading(true);
+    }
+  };
+
+
   useEffect(() => {
-    const initData = async () => {
-
-      try {
-        setIsLoading(false);
-        const data = await fetchData();
-        setProfile(data.getProfile);
-
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-        setIsLoading(true);
-      }
-
-    };
     initData();
   }, []);
-
 
 
   useEffect(() => {
@@ -49,26 +52,28 @@ function App() {
       })
     }
 
-
   }, [profile, rootColors]);
 
 
+
+
   return (
-
-    isLoading ? <Loader /> :
-      <>
-        < Hero />
-        <Header />
-        <Routes>
-          <Route path="/" element={<About />} />
-          <Route path="product" element={<Product />} />
-          <Route path="contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </>
-
-
-
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Hero profile={profile} />
+          <Header profile={profile} />
+          <Routes>
+            <Route path="/" element={<About profile={profile} brands={brands} />} />
+            <Route path="product" element={<Product profile={profile} brands={brands} products={products} />} />
+            <Route path="contact" element={<Contact profile={profile} />} />
+          </Routes>
+          <Footer profile={profile} />
+        </>
+      )}
+    </>
   );
 }
 

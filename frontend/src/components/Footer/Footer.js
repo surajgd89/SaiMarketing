@@ -1,10 +1,8 @@
 import './Footer.scss'
 import { useEffect, useState } from 'react';
-import { fetchData } from '../../services/api';
 
-function Footer() {
 
-   const [profile, setProfile] = useState([]);
+function Footer({ profile }) {
 
    const [workingDays, setWorkingDays] = useState();
    const [workingTime, setWorkingTime] = useState();
@@ -18,18 +16,7 @@ function Footer() {
    const [address, setAddress] = useState();
 
 
-   useEffect(() => {
-      const initData = async () => {
-         try {
-            const data = await fetchData();
-            setProfile(data.getProfile);
-          
-         } catch (error) {
-            console.log(error)
-         }
-      };
-      initData();
-   }, []);
+
 
    useEffect(() => {
       if (profile && profile.businessHrs) {

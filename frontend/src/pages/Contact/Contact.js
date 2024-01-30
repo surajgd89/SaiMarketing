@@ -1,16 +1,10 @@
 import './Contact.scss'
 import Map from '../../components/Map/Map';
 
-import { useEffect, useState } from 'react';
-import { fetchData, sendEmail } from '../../services/api';
+import { useState } from 'react';
+import { sendEmail } from '../../services/api';
 
-
-
-
-function Contact() {
-
-   const [profile, setProfile] = useState([]);
-
+function Contact({ profile }) {
 
    const [formData, setFormData] = useState({
       name: '',
@@ -82,30 +76,6 @@ function Contact() {
       }
 
    };
-
-
-
-
-
-
-
-
-
-
-   useEffect(() => {
-      const initData = async () => {
-         try {
-            const data = await fetchData();
-            setProfile(data.getProfile);
-         } catch (error) {
-            console.log(error)
-         }
-      };
-      initData();
-
-   }, []);
-
-
 
    return (
       <>

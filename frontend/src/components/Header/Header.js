@@ -2,10 +2,9 @@ import { useRef } from 'react';
 import './Header.scss'
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { fetchData } from '../../services/api';
 
-function Header() {
-   const [profile, setProfile] = useState([]);
+function Header({ profile }) {
+
    const [flName, setFlName] = useState(null);
    const headerNav_Ref = useRef();
    const cNameRef_Ref = useRef();
@@ -18,22 +17,6 @@ function Header() {
    const redirectNav = () => {
       headerNav_Ref.current.classList.remove('header__nav--toggle');
    }
-
-
-
-   useEffect(() => {
-      const initData = async () => {
-         try {
-            const data = await fetchData();
-            setProfile(data.getProfile);
-          
-         } catch (error) {
-            console.log(error)
-         }
-      };
-      initData();
-
-   }, []);
 
    useEffect(() => {
 
